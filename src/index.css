@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { font-family: 'DM Sans', sans-serif; color: #18213f; background: #f7f8fc; font-synthesis: none; text-rendering: optimizeLegibility; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+::selection { background: #dcd8ff; color: #312e81; }
+.soft-grid {
+  background-image: radial-gradient(rgba(105,89,238,.09) .8px, transparent .8px);
+  background-size: 18px 18px;
+}
+.glass { background: rgba(255,255,255,.78); backdrop-filter: blur(16px); }
+.gradient-text { background: linear-gradient(100deg,#6253e8 10%,#16a997 95%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.focus-ring:focus-visible { outline: 3px solid rgba(105,89,238,.35); outline-offset: 3px; }
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.floaty { animation: floaty 5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+/* Responsive safeguards across narrow phones, tablets and wide desktops */
+html { scroll-behavior: smooth; }
+img, video, canvas, svg { max-width: 100%; }
+input, select, textarea { max-width: 100%; }
+@media (max-width: 640px) {
+  body { overflow-x: hidden; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+}
+@media (min-width: 1600px) { body { font-size: 16px; } }
+
+/* Small-screen-first responsive hardening (320px and wider) */
+html, body, #root { width: 100%; max-width: 100%; min-height: 100%; }
+body { overflow-x: clip; }
+#root, #root > div, #root main, #root header, #root footer { min-width: 0; }
+main, section, article, aside, header, footer, form, nav, button, a { min-width: 0; }
+img, video, canvas, iframe { display: block; max-width: 100%; }
+pre, code { max-width: 100%; overflow-x: auto; }
+button, input, select, textarea { min-width: 0; }
+input, select, textarea { width: 100%; }
+textarea { overflow-wrap: anywhere; }
+/* Prevent long labels, filenames, and assistant messages from stretching layouts. */
+main :where(h1,h2,h3,h4,p,span,label,div) { overflow-wrap: break-word; }
+main :where(.grid) { min-width: 0; }
+main :where(.grid > *, .flex > *) { min-width: 0; }
+main :where(table) { width: 100%; border-collapse: collapse; }
+main :where(th,td) { overflow-wrap: anywhere; }
+
+@media (max-width: 1023px) {
+  aside[class*="fixed inset-y-0"] { width: min(264px, 88vw); max-width: 88vw; overflow-y: auto; overscroll-behavior: contain; }
+}
+@media (max-width: 640px) {
+  #root main { padding: 16px 12px 24px !important; }
+  #root footer { padding-left: 12px; padding-right: 12px; }
+  #root header > div:first-child { gap: 8px; padding-left: 12px; padding-right: 12px; }
+  #root header button { flex-shrink: 0; }
+  #root main .rounded-3xl { border-radius: 18px; }
+  #root main .p-5 { padding: 14px; }
+  #root main .sm\:p-6, #root main .sm\:p-7, #root main .sm\:p-8 { padding: 14px; }
+  #root main :where(h1) { font-size: clamp(1.35rem, 6vw, 1.9rem); line-height: 1.2; }
+  #root main :where(h2) { line-height: 1.25; }
+  #root main :where(button) { overflow-wrap: anywhere; }
+}
+@media (max-width: 380px) {
+  #root main { padding: 12px 9px 20px !important; }
+  #root header > div:first-child { padding-left: 9px; padding-right: 9px; }
+  #root header button { gap: 4px; }
+  #root header button[aria-label="Notifications (demo)"] { width: 36px; height: 36px; }
+  #root main .gap-5 { gap: 12px; }
+  #root main .gap-4 { gap: 10px; }
+  #root main .p-4 { padding: 11px; }
+  #root main :where(.text-2xl, .text-3xl) { font-size: 1.35rem; line-height: 1.25; }
+  #root main .max-w-\[88\%\] { max-width: 92%; }
+}
+@media (max-width: 340px) {
+  #root main { padding-left: 7px !important; padding-right: 7px !important; }
+  #root header button[aria-label="Open navigation"] { width: 36px; height: 36px; }
+  #root header button[aria-label="Notifications (demo)"] { display: none; }
+}
